@@ -1,0 +1,90 @@
+<div class="principal">
+
+    <!-- HERO (Estructura original 100% respetada) -->
+    <section class="hero">
+
+        <!-- NUEVO: Contenedor interno para renderizar las imágenes reales en el lado derecho -->
+        <div class="carrusel-derecho-html">
+            <img 
+              *ngFor="let img of imagenesFondo; let i = index" 
+              [src]="img" 
+              [class.activa]="i === indiceActivo"
+              alt="Fondo POS">
+        </div>
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+            <span class="tag">Tienda en línea</span>
+            <h1>Compra todo lo que necesitas desde un solo lugar</h1>
+            <p>Explora productos destacados, categorías populares y ofertas disponibles para entrega inmediata.</p>
+            <div class="hero-buttons">
+                <button routerLink="/ventas">Explorar tienda</button>
+                <button routerLink="/ofertas">Ver ofertas</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- CATEGORIAS -->
+   <section class="categorias">
+
+    <div class="titulo">
+        <h2>Categorías populares</h2>
+        <p>Explora nuestras categorías principales</p>
+    </div>
+
+    <div class="grid-categorias">
+        
+        <div class="categoria-card"
+             *ngFor="let c of categorias"
+             [routerLink]="['/todo']" 
+             [queryParams]="{ categoria: c.nombre }"
+             [ngClass]="c.nombre.toLowerCase()">
+
+           
+            <div class="categoria-overlay-card"></div>
+
+            <div class="categoria-info">
+                <h3>
+                    {{ c.nombre | titlecase }}
+                </h3>
+                <span>
+                    Ver productos
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+    <!-- PRODUCTOS -->
+    <section class="productos">
+        <div class="titulo">
+            <h2>Productos destacados</h2>
+            <button routerLink="/ventas">Ver catálogo</button>
+        </div>
+        <div class="grid-productos">
+            <div class="producto-card" *ngFor="let p of productosDestacados">
+                <div class="imagen-container">
+                    <img [src]="p.Image">
+                    <span class="badge">{{ p.categoria }}</span>
+                </div>
+                <div class="producto-info">
+                    <span class="codigo">{{ p.codigo }}</span>
+                    <h3>{{ p.nombre | titlecase }}</h3>
+                    <p class="descripcion">{{ p.descripcion }}</p>
+                    <div class="extra">
+                        <span>{{ p.marca }}</span>
+                        <span>{{ p.peso }}</span>
+                    </div>
+                    <div class="precio-row">
+                        <div><span class="precio">${{ p.precio }}</span></div>
+                        <button>Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

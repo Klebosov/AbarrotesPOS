@@ -1,0 +1,103 @@
+.detalle-container{
+    min-height:100vh;
+    padding:40px;
+    background:#f4f6f9;
+}
+
+.btn-volver{
+    display:inline-block;
+    margin-bottom:30px;
+    text-decoration:none;
+    background:white;
+    padding:14px 20px;
+    border-radius:14px;
+    color:black;
+}
+
+.detalle-card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.imagen-area{
+    background:#eef2f7;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+}
+
+.imagen-area img{
+    width:100%;
+    max-width:450px;
+}
+
+.info-area{
+    padding:50px;
+}
+
+.categoria{
+    background:#dbeafe;
+    color:#2563eb;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+}
+
+.info-area h1{
+    font-size:3rem;
+}
+
+.descripcion{
+    margin:20px 0;
+    line-height:1.7;
+}
+
+.datos-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+
+    margin-bottom:30px;
+}
+
+.dato{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:16px;
+}
+
+.precio-container span{
+    font-size:3rem;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.btn-comprar{
+    margin-top:30px;
+
+    border:none;
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+}

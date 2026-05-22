@@ -1,0 +1,20 @@
+.faq-container {
+  background: var(--bg);
+  color: var(--text);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.faq-container h1,
+.faq-container h2 {
+  color: var(--dark);
+}
+
+.faq-item {
+  margin-bottom: 18px;
+}
+
+.faq-item p {
+  color: var(--text-light);
+}

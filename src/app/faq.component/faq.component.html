@@ -1,0 +1,66 @@
+<div class="max-w-xl mx-auto mt-10 space-y-2 font-sans">
+  <h1 class="text-2xl font-bold mb-5">Preguntas Frecuentes</h1>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta1()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿Se aceptan tarjetas de credito?
+    </div>
+    <div #respuesta1 class="hidden p-4 bg-white border-t">
+      Si, aceptamos cualqueir tipo de tarjeta de credito
+    </div>
+  </div>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta2()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿Cuentan con ofertas de forma regular?
+    </div>
+    <div #respuesta2 class="hidden p-4 bg-white border-t">
+      Si, todos los fines de semana tenemos ofertas en multiples productos?
+    </div>
+  </div>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta3()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿El sistema permite cobrar con lector de código de barras?
+    </div>
+    <div #respuesta3 class="hidden p-4 bg-white border-t">
+      Sí, nuestro sistema es totalmente compatible con la mayoría de escáneres láser y USB del mercado para agilizar las filas.
+    </div>
+  </div>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta4()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿Puedo realizar ventas de productos que no tienen código (como frutas o pan)?
+    </div>
+    <div #respuesta4 class="hidden p-4 bg-white border-t">
+      ¡Por supuesto! Puedes crear botones de acceso rápido o buscar productos manualmente por nombre para vender artículos a granel o sin etiqueta.
+    </div>
+  </div>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta5()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿Qué pasa si se va el internet mientras estoy cobrando?
+    </div>
+    <div #respuesta5 class="hidden p-4 bg-white border-t">
+      El sistema cuenta con un modo offline que permite seguir registrando ventas. Una vez que regrese la conexión, los datos se sincronizan automáticamente.
+    </div>
+  </div>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta6()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿Cómo me avisa el sistema si un producto se está agotando?
+    </div>
+    <div #respuesta6 class="hidden p-4 bg-white border-t">
+      Puedes configurar "mínimos de stock". El sistema te enviará una alerta automática cuando un producto llegue a su límite para que realices tu pedido a tiempo.
+    </div>
+  </div>
+
+  <div class="border rounded shadow-sm">
+    <div (click)="clicPregunta7()" class="bg-gray-100 p-4 cursor-pointer hover:bg-gray-200">
+      ¿Es posible registrar las mermas o productos caducados?
+    </div>
+    <div #respuesta7 class="hidden p-4 bg-white border-t">
+      ¡Sí, contamos con un módulo específico para registrar salidas de mercancía por daño o caducidad, manteniendo tu inventario real siempre actualizado.
+    </div>
+  </div>
+</div>

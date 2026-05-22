@@ -1,0 +1,20 @@
+:root {
+  --bg: #E8D5C4;
+  --primary: #7DB4C0;
+  --dark: #1B5E6F;
+  --text: #2C3E50;
+  --text-light: #555555;
+  --border: #7DB4C0;
+}
+
+/* Esto hace que la clase 'hidden' funcione en todo el proyecto */
+.hidden {
+  display: none !important;
+}
+
+/* Clases de apoyo para que se vea como el diseño de Tailwind */
+.bg-gray-100 { background-color: #FFFFFF; }
+.p-4 { padding: 1rem; }
+.cursor-pointer { cursor: pointer; }
+.border { border: 1px solid var(--border); }
+.font-bold { font-weight: 700; }

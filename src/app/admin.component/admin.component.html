@@ -1,0 +1,84 @@
+<div class="container py-4">
+
+  <h2 class="text-center mb-4">Panel Admin</h2>
+
+  <!-- TABS -->
+  <div class="text-center mb-3">
+    <button class="btn btn-dark me-2" (click)="tipoVista='productos'">Productos</button>
+    <button class="btn btn-primary me-2" (click)="tipoVista='categorias'">Categorías</button>
+    <button class="btn btn-success" (click)="tipoVista='usuarios'">Usuarios</button>
+  </div>
+
+  <!-- ================= PRODUCTOS ================= -->
+  <div *ngIf="tipoVista==='productos'" class="card p-3 shadow">
+
+    <h5>Agregar Producto</h5>
+    <div class="row mb-3">
+      <div class="col"><input class="form-control" [(ngModel)]="nuevoProducto.nombre" placeholder="Nombre"></div>
+      <div class="col"><input class="form-control" [(ngModel)]="nuevoProducto.precio" placeholder="Precio"></div>
+      <div class="col"><input class="form-control" [(ngModel)]="nuevoProducto.descripcion" placeholder="Descripción"></div>
+      <div class="col"><input class="form-control" [(ngModel)]="nuevoProducto.Image" placeholder="Imagen"></div>
+      <div class="col"><button class="btn btn-success w-100" (click)="agregarProducto()">Agregar</button></div>
+    </div>
+
+    <table class="table table-hover">
+      <tr *ngFor="let p of listaProductos">
+        <td>{{p.nombre}}</td>
+        <td>${{p.precio}}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="editarProducto(p)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarProducto(p.id)">Borrar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ================= CATEGORIAS ================= -->
+  <div *ngIf="tipoVista==='categorias'" class="card p-3 shadow">
+
+    <h5>Agregar Categoría</h5>
+    <div class="d-flex mb-3">
+      <input class="form-control me-2" [(ngModel)]="nuevaCategoria.nombre" placeholder="Nombre">
+      <button class="btn btn-primary" (click)="agregarCategoria()">Agregar</button>
+    </div>
+
+    <table class="table">
+      <tr *ngFor="let c of listaCategorias">
+        <td>{{c.nombre}}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="editarCategoria(c)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarCategoria(c.id)">Borrar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ================= USUARIOS ================= -->
+  <div *ngIf="tipoVista==='usuarios'" class="card p-3 shadow">
+
+    <h5>Agregar Usuario</h5>
+    <div class="row mb-3">
+      <div class="col"><input class="form-control" [(ngModel)]="nuevoUsuario.uss" placeholder="Usuario"></div>
+      <div class="col"><input class="form-control" [(ngModel)]="nuevoUsuario.password" placeholder="Password"></div>
+      <div class="col">
+        <select class="form-control" [(ngModel)]="nuevoUsuario.rol">
+          <option value="admin">admin</option>
+          <option value="user">user</option>
+        </select>
+      </div>
+      <div class="col"><button class="btn btn-success w-100" (click)="agregarUsuario()">Agregar</button></div>
+    </div>
+
+    <table class="table">
+      <tr *ngFor="let u of listaUsuarios">
+        <td>{{u.uss}}</td>
+        <td>{{u.rol}}</td>
+        <td>
+          <button class="btn btn-warning btn-sm me-2" (click)="editarUsuario(u)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(u.uss)">Borrar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>

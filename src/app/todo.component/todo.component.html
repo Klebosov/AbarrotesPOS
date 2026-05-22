@@ -1,0 +1,66 @@
+<div class="pantalla-pos">
+
+  <header class="header-azul">
+    <div class="logo-area">
+      <h1>Sistema POS</h1>
+      <p>Tienda Alimenticia</p>
+    </div>
+  </header>
+
+  <div class="cuerpo-pos">
+
+   
+    <main class="panel-productos" style="width: 100%; flex: 1;">
+
+      <div class="buscador-container">
+        <input
+          type="text"
+          placeholder="Buscar producto..."
+          #txtBuscar
+          (input)="BuscarProducto(txtBuscar.value)"
+        >
+      </div>
+
+      <div class="filtros-categorias">
+        <button
+          *ngFor="let cat of categorias"
+          (click)="filtrarCategoria(cat.nombre)"
+        >
+          {{ cat.nombre }}
+        </button>
+      </div>
+
+      <div class="grid-productos">
+        <article
+          class="tarjeta-producto"
+          *ngFor="let p of productos"
+        >
+          <a class="nav-link" [routerLink]="['/producto', p.id]" routerLinkActive="active">
+            <img
+              class="imagen-placeholder"
+              [src]="p.Image"
+              [alt]="p.nombre"
+            >
+          </a>
+
+          <div class="info-producto">
+            <h3>{{ p.nombre }}</h3>
+            <p class="descripcion">
+              {{ p.descripcion }}
+            </p>
+            <span class="precio">
+              $ {{ p.precio }}
+            </span>
+            
+            <button class="btn-agregar" (click)="AgregarAlCarrito(p)">
+              Agregar
+            </button>
+          </div>
+        </article>
+      </div>
+
+    </main>
+
+  </div>
+
+</div>

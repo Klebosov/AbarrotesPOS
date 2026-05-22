@@ -1,0 +1,127 @@
+<nav class="navbar navbar-expand-lg ">
+ <div class="container-fluid">
+ <span class="navbar-brand">MiApp</span>
+ <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarContenido">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-custom ">
+   <li class="nav-item"><button class="nav-link" routerLink="/principal" routerLinkActive="active">Inicio</button></li>
+   <li class="nav-item"><button class="nav-link" routerLink="/todo" routerLinkActive="active">Todo</button></li>
+   <li class="nav-item"><button class="nav-link" routerLink="/faq" routerLinkActive="active">Preguntas Frecuentes(FAQ)</button></li>
+  </ul>
+
+  <form class="d-flex">
+   <input class="form-control me-2" type="search" placeholder="Buscar">
+   <button class="btn btn-outline-light me-3">Buscar</button>
+  </form>
+  
+  <!-- BOTÓN INDICADOR DEL CARRITO GLOBAL -->
+  <button class="btn btn-warning me-3 position-relative" (click)="toggleCarrito()">
+    🛒 Carrito 
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" *ngIf="carrito.length > 0">
+      {{ carrito.length }}
+    </span>
+  </button>
+
+  <button class="sesion" routerLink="/login" routerLinkActive="active">
+    <img class="image" src="assets/icono.png">
+  </button>
+ </div>
+ </div>
+</nav>
+
+<!-- PANEL LATERAL DESLIZANTE -->
+<div class="carrito-sidebar" [class.abierto]="carritoAbierto">
+  <div class="carrito-header">
+    <h5 class="mb-0">🛒 Mi Carrito</h5>
+    <button class="btn-cerrar" (click)="toggleCarrito()">&times;</button>
+  </div>
+
+  <div class="carrito-body">
+    <div *ngIf="carrito.length === 0" class="text-center text-muted mt-5">
+      <p>No hay productos en el carrito</p>
+    </div>
+
+    <!-- Renderizado dinámico de tarjetas agregadas -->
+    <div class="card p-3 mb-2 shadow-sm" *ngFor="let item of carrito; let i = index">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h6 class="mb-1 text-capitalize fw-bold">{{ item.nombre }}</h6>
+          <span class="text-muted small">${{ item.precio }} c/u</span>
+        </div>
+        <button class="btn btn-sm btn-outline-danger border-0" (click)="eliminarDelCarrito(i)">✕</button>
+      </div>
+      
+      <div class="d-flex justify-content-between align-items-center mt-2 pt-2 border-top">
+        <div class="btn-group btn-group-sm">
+          <button class="btn btn-outline-secondary px-2" (click)="disminuirCantidad(item)">-</button>
+          <span class="btn btn-light px-3 fw-bold" style="pointer-events: none;">{{ item.cantidad }}</span>
+          <button class="btn btn-outline-secondary px-2" (click)="aumentarCantidad(item)">+</button>
+        </div>
+        <span class="fw-bold text-dark">${{ item.subtotal }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTROL DE ACCIONES INFERIORES -->
+  <div class="carrito-footer" *ngIf="carrito.length > 0">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted fw-bold">Total a Pagar:</span>
+      <h3 class="text-success fw-bold m-0">${{ getTotal() }}</h3>
+    </div>
+    
+    <button class="btn btn-success w-100 py-2.5 mb-2 fw-bold shadow-sm" (click)="comprar()">
+      PROCESAR COMPRA 💳
+    </button>
+    
+    <button class="btn btn-link text-danger w-100 btn-sm text-decoration-none" (click)="vaciarCarrito()">
+      Vaciar todo el carrito
+    </button>
+  </div>
+</div>
+
+<!-- CAPA PROTECTORA TRANSLÚCIDA -->
+<div class="carrito-overlay" *ngIf="carritoAbierto" (click)="toggleCarrito()"></div>
+
+<!-- PLANTILLA DEL TICKET DE COMPRA (MANTENIDA OCULTA DEL DOM VISIBLE) -->
+<div id="ticketMenu" style="display: none;">
+  <div style="text-align: center;">
+    <h2>TIENDA CUTONALA</h2>
+    <p>Ticket de compra</p>
+    <hr>
+    <p style="text-align: left;"><b>Folio:</b> {{ folio }}</p>
+    <p style="text-align: left;"><b>Fecha:</b> {{ fecha }}</p>
+    <hr>
+  </div>
+  
+  <table style="width: 100%; margin-top: 10px;">
+    <thead>
+      <tr>
+        <th>Prod</th>
+        <th>Cant</th>
+        <th style="text-align: right;">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of carrito">
+        <!-- CÓDIGO CORREGIDO -->
+        <td style="text-transform: capitalize;">{{ item.nombre }}</td>
+
+        <td>{{ item.cantidad }} x ${{ item.precio }}</td>
+        <td style="text-align: right;">${{ item.subtotal }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <hr>
+  <h3 style="text-align: right; margin-top: 10px;">TOTAL: ${{ getTotal() }}</h3>
+  <hr>
+  
+  <div style="text-align: center; margin-top: 20px;">
+    <img [src]="qrData" *ngIf="qrData" style="width: 140px; height: 140px;" alt="Código QR"><br>
+    <!-- Elemento SVG configurado para la inyección de JsBarcode -->
+    <svg id="barcodeMenu" style="margin-top: 15px;"></svg>
+    <p style="margin-top: 15px; font-size: 12px; font-weight: bold;">¡Gracias por su compra!</p>
+  </div>
+</div>

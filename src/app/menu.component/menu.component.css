@@ -1,0 +1,139 @@
+/* Navbar ancho completo */
+.navbar {
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--primary);
+}
+
+#navbarContenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+/* Quitar estilo de botón */
+.menu-custom .nav-link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.menu-custom .nav-link:hover {
+  color: var(--bg);
+  transform: scale(1.05);
+}
+
+/* Activo */
+.menu-custom .nav-link.active {
+  color: var(--bg);
+  border-bottom: 2px solid var(--bg);
+}
+
+/* Espaciado */
+.menu-custom .nav-item {
+  margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-custom {
+    text-align: center;
+  }
+
+  .menu-custom .nav-item {
+    margin: 6px 0;
+  }
+}
+.image {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+}
+.sesion{
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  padding: 1px;
+  
+}
+/* ================= CARRITO SIDEBAR GENERAL ================= */
+.carrito-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Oculto inicialmente a la derecha */
+  width: 380px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+  z-index: 1050; /* Por encima de la navegación estándar */
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s ease-in-out; /* Animación de deslizamiento suave */
+}
+
+/* Estado Activo: Desliza el panel a la pantalla */
+.carrito-sidebar.abierto {
+  right: 0;
+}
+
+/* Cabecera del Panel */
+.carrito-header {
+  padding: 20px;
+  background: var(--dark);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carrito-header h5 {
+  margin: 0;
+}
+
+.btn-cerrar {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Cuerpo interno deslizable */
+.carrito-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Permite scroll interno si hay muchos productos */
+}
+
+/* Sección inferior de acciones */
+.carrito-footer {
+  padding: 20px;
+  border-top: 1px solid #e9ecef;
+  background-color: #f8fafc;
+}
+
+/* Fondo translúcido detrás del carrito */
+.carrito-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1040; /* Justo debajo de la barra lateral */
+}
+
+/* Ajuste responsivo para celulares pequeños */
+@media (max-width: 400px) {
+  .carrito-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}

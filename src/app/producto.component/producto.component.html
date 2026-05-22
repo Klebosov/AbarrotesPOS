@@ -1,0 +1,106 @@
+<div
+class="detalle-container"
+*ngIf="producto"
+>
+
+    <a
+    routerLink="/todo"
+    class="btn-volver"
+    >
+        ← Volver
+    </a>
+
+    <div class="detalle-card">
+
+        <div class="imagen-area">
+
+            <img      [src]="producto.Image"      [alt]="producto.nombre"
+            >
+
+        </div>
+
+        <div class="info-area">
+
+            <span class="categoria">
+
+                {{ producto.categoria }}
+
+            </span>
+
+            <h1>
+
+                {{ producto.nombre }}
+
+            </h1>
+
+            <p class="descripcion">
+
+                {{ producto.descripcion }}
+
+            </p>
+
+            <div class="datos-grid">
+
+                <div class="dato">
+
+                    <span>Marca</span>
+
+                    <strong>
+                        {{ producto.marca }}
+                    </strong>
+
+                </div>
+
+                <div class="dato">
+
+                    <span>Contenido</span>
+
+                    <strong>
+                        {{ producto.contenido }}
+                    </strong>
+
+                </div>
+
+                <div class="dato">
+
+                    <span>Peso</span>
+
+                    <strong>
+                        {{ producto.peso }}
+                    </strong>
+
+                </div>
+
+                <div class="dato">
+
+                    <span>Stock</span>
+
+                    <strong>
+                        {{ producto.stock }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="precio-container">
+
+                <span>
+
+                    $ {{ producto.precio }}
+
+                </span>
+
+            </div>
+
+            <button class="btn-comprar">
+
+                Agregar al carrito
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

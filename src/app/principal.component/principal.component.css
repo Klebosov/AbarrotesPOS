@@ -1,0 +1,374 @@
+.principal{
+    background: #f1f5f9;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* ================= HERO CORREGIDO ================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh; 
+  min-height: 500px;
+  background-color: #1B5E6F; /* Mantiene tu color base corporativo */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carrusel-derecho-html img {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+
+  transform: scale(1.05);
+
+  transition:
+    opacity .4s ease,
+    transform 1.5s ease;
+}
+
+.carrusel-derecho-html img.activa {
+
+  opacity: 1;
+
+  transform: scale(1);
+
+}
+
+.carrusel-derecho-html img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Evita que la foto se deforme */
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out; /* Efecto desvanecido */
+}
+.carrusel-derecho-html img.activa {
+  opacity: 1;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  /* CORREGIDO: Reducimos el alcance del azul sólido al 45% e iniciamos la transparencia absoluta desde el 65% */
+  background: linear-gradient(
+ to right,
+ rgba(27,94,111,1) 40%,
+ rgba(27,94,111,.75) 55%,
+ rgba(27,94,111,.25) 70%,
+ rgba(27,94,111,0) 100%
+);
+}
+
+.hero-content {
+  position: relative;
+  width: 55%; 
+  padding-left: 5%;
+  color: white;
+  z-index: 3; 
+}
+
+/* Responsivo estándar */
+@media (max-width: 992px) {
+  .hero {
+    height: auto;
+    padding: 60px 20px;
+  }
+  .carrusel-derecho-html {
+    display: none;
+  }
+  .hero-content {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+.tag{
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(10px);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: .9rem;
+}
+
+.hero-content h1{
+    margin-top: 25px;
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: bold;
+}
+
+.hero-content p{
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.hero-buttons{
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.hero-buttons button{
+    padding: 16px 32px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.hero-buttons button:first-child{
+    background: #7DB4C0;
+    color: white;
+}
+
+.hero-buttons button:last-child{
+    background: white;
+    color: #0f172a;
+}
+
+.hero-buttons button:hover{
+    transform: translateY(-3px);
+}
+
+/* ================= TITULOS ================= */
+
+.titulo{
+    margin-bottom: 40px;
+}
+
+.titulo h2{
+    font-size: 2.5rem;
+    color: #0f172a;
+}
+
+.titulo p{
+    margin-top: 10px;
+    color: #64748b;
+}
+
+/* ================= CATEGORIAS ================= */
+
+.categorias{
+    padding: 80px;
+}
+
+.grid-categorias{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+}
+
+.categoria-card{
+    position: relative;
+    background: linear-gradient(135deg,#7DB4C0,#7DB4C0);
+    min-height: 180px;
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+    display: flex;
+    align-items: end;
+    padding: 30px;
+}
+
+.categoria-card:hover{
+    transform: translateY(-6px);
+}
+
+.categoria-info{
+    color: white;
+}
+
+.categoria-info h3{
+    font-size: 1.8rem;
+}
+
+.categoria-info span{
+    display: block;
+    margin-top: 10px;
+    color: #dbeafe;
+}
+
+/* ================= PRODUCTOS ================= */
+
+.productos{
+    padding: 0 80px 80px;
+}
+
+.productos .titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productos .titulo button{
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.grid-productos{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+}
+
+.producto-card{
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.producto-card:hover{
+    transform: translateY(-6px);
+}
+
+.imagen-container{
+    position: relative;
+}
+
+.imagen-container img{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.badge{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255,255,255,.9);
+    color: #0f172a;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.producto-info{
+    padding: 25px;
+}
+
+.column-codigo, .codigo{
+    color: #2563eb;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.producto-info h3{
+    margin: 15px 0;
+    font-size: 1.5rem;
+    color: #0f172a;
+}
+
+.descripcion{
+    color: #64748b;
+    line-height: 1.7;
+    min-height: 60px;
+}
+
+.extra{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: #475569;
+    font-size: .95rem;
+}
+
+.precio-row{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.precio{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+.precio-row button{
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.precio-row button:hover{
+    background: #1d4ed8;
+}
+/* ================= CONFIGURACIÓN DE FONDOS DE CATEGORÍA ================= */
+
+.categoria-card {
+    position: relative;
+    min-height: 180px;
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .3s;
+    display: flex;
+    align-items: end;
+    padding: 30px;
+    /* Estilos base obligatorios para que las fotos luzcan perfectas */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Enlazamos cada clase de tu base de datos con su respectiva ruta física */
+.categoria-card.lacteo { background-image: url('/assets/Imagenes/Lacteos/Queso Panela.jpg'); }
+.categoria-card.granos { background-image: url('/assets/Imagenes/Granos/Frijol.jpg'); } /* Ajusta si tu archivo se llama diferente */
+.categoria-card.carnes { background-image: url('/assets/Imagenes/Carnes/Res.jpg'); }
+.categoria-card.verduras { background-image: url('/assets/Imagenes/Verduras/Jitomate.jpg'); }
+.categoria-card.bebidas { background-image: url('/assets/Imagenes/Bebidas/Refresco.jpg'); }
+.categoria-card.snacks { background-image: url('/assets/Imagenes/Snacks/Galletas.jpg'); }
+.categoria-card.especias { background-image: url('/assets/Imagenes/Specias/Oregano.jpg'); }
+.categoria-card.hogar { background-image: url('/assets/Imagenes/Hogar/Limpiador.jpg'); }
+.categoria-card.todo { background-image: url('/assets/Imagenes/Todo/Miel.jpg'); }
+
+/* Sombreado oscuro para que las letras blancas no se pierdan con el fondo de las fotos */
+.categoria-overlay-card {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 20%, rgba(27, 94, 111, 0.3) 100%);
+    z-index: 1;
+}
+
+.categoria-info {
+    color: white;
+    position: relative;
+    z-index: 2; 
+}
+
+.categoria-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
